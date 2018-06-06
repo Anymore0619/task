@@ -20,11 +20,17 @@ class Controller_Project extends Controller_baseController
         $this->template->content = \View::forge('default/project/index');
     }
 
-    public function get_all_tasks(){
-        $data = \DB::query('SELECT * FROM tasks')->execute();
+    public function get_tasks(){
+        $action = \Input::get('action');
+        $data = [];
+        $users = \DB::query('SELECT * FROM users')->execute();
+        if($action === 'all'){
+            $data = \DB::query('SELECT * FROM tasks')->execute();
+        }
         \View::set_global([
             'title'     =>  '主页',
-            'data'      =>  $data
+            'data'      =>  $data,
+            'users'     =>  $users
         ]);
         $this->template->content = \View::forge('default/project/view');
     }

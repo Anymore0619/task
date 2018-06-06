@@ -64,7 +64,7 @@
         </div>
 
         <div class="am-topbar-right">
-            <a href="/task/project/all_tasks"  class="am-btn am-btn-success am-topbar-btn am-round am-btn-sm">全部任务</a>
+            <a href="/task/project/tasks?action=all"  class="am-btn am-btn-success am-topbar-btn am-round am-btn-sm">全部任务</a>
         </div>
 
     </div>

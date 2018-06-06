@@ -24,27 +24,7 @@
     }
 </style>
 
-<header class="am-topbar">
-    <h1 class="am-topbar-brand">
-        <a href="/project">送车中国任务管理系统</a>
-    </h1>
 
-    <button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-success am-show-sm-only" data-am-collapse="{target: '#doc-topbar-collapse'}"><span class="am-sr-only">导航切换</span> <span class="am-icon-bars"></span></button>
-
-    <div class="am-collapse am-topbar-collapse" id="doc-topbar-collapse">
-
-        <div class="am-topbar-right">
-            <a href="/auth/logout" class="am-btn am-btn-default am-topbar-btn am-round am-btn-sm">登出</a>
-        </div>
-
-        <div class="am-topbar-right">
-            <div id="task-add-task-btn" class="am-btn am-btn-secondary am-topbar-btn am-round am-btn-sm">新建任务</div>
-        </div>
-
-
-
-    </div>
-</header>
 
 <div class="task-wrapper">
     <!--筛选条件-->
@@ -86,10 +66,12 @@
                         data-am-dropdown-toggle> <span class="am-icon-caret-down"></span></button>
                 <ul class="am-dropdown-content" id="accept-user" style="height: 420px;overflow-y: scroll">
                     <li class="am-active" data-id=""><a href="#">全部</a></li>
+                    <?php foreach($users as $user){ ?>
+                        <li data-id="<?= $user['id']?>"><a href="#"><?= $user['username']?></a></li>
+                    <?php }?>
                 </ul>
             </div>
         </div>
-
         <div class="am-btn-group am-topbar-right" style="margin-top: 8px">
             <button class="am-btn am-round am-btn-sm am-btn-primary" id="publisher-text">发布人</button>
             <div class="am-dropdown" data-am-dropdown>
@@ -97,6 +79,9 @@
                         data-am-dropdown-toggle> <span class="am-icon-caret-down"></span></button>
                 <ul class="am-dropdown-content" id="publisher" style="height: 420px;overflow-y: scroll">
                     <li class="am-active" data-id=""><a href="#">全部</a></li>
+                    <?php foreach($users as $user){ ?>
+                        <li data-id="<?= $user['id']?>"><a href="#"><?= $user['username']?></a></li>
+                    <?php }?>
                 </ul>
             </div>
         </div>
@@ -117,7 +102,7 @@
 
     </div>
     <ol class="am-breadcrumb">
-        <li><a href="/project">项目</a></li>
+        <li><a href="/task/project">项目</a></li>
         <li><a href="#" id="task-pro-name"></a></li>
         <li><a href="#">任务列表</a></li>
     </ol>
@@ -138,24 +123,25 @@
             <th>操作</th>
         </tr>
         </thead>
+
         <tbody id="task-project-table">
             <?php if(isset($data)){?>
-                <?php foreach ($data as $item){ var_dump($item);die;?>
-                    <tr data-id="<?= $item['id']?>">
-                        <td>#<?= $item['union_id']?></td>
-                        <td><?= $item['status']?></td>
-                        <td><?= $item['created_at']?></td>
-                        <?php if(false){?>
-                            <td>
-                                <?= $item['status']?>
-                                <span style="font-size:10px;background-color:#e85b72;color:#fff;padding:2px 4px;border-radius:5px"">已逾期</span>
-                            </td>
-                        <?php }?>
-                        <td>
-                            <a href="javascript:void(0);" role="review-task">查看</a>
-                        </td>
-                    </tr>
-                <?php }?>
+<!--                --><?php //foreach ($data as $item){ ?>
+<!--                    <tr data-id="--><?//= $item['id']?><!--">-->
+<!--                        <td>#--><?//= $item['union_id']?><!--</td>-->
+<!--                        <td>--><?//= $item['status']?><!--</td>-->
+<!--                        <td>--><?//= $item['created_at']?><!--</td>-->
+<!--                        --><?php //if(false){?>
+<!--                            <td>-->
+<!--                                --><?//= $item['status']?>
+<!--                                <span style="font-size:10px;background-color:#e85b72;color:#fff;padding:2px 4px;border-radius:5px"">已逾期</span>-->
+<!--                            </td>-->
+<!--                        --><?php //}?>
+<!--                        <td>-->
+<!--                            <a href="javascript:void(0);" role="review-task">查看</a>-->
+<!--                        </td>-->
+<!--                    </tr>-->
+<!--                --><?php //}?>
             <?php }?>
 
         </tbody>
@@ -178,9 +164,15 @@
             <form role="form" id="new-task-form" class="am-form" action="" onsubmit="return false">
                 <select name="publisher_id" style="border-radius: 5px;margin-top: 10px" class="am-modal-prompt-input" id="publish-name">
                     <option value="" selected disabled>选择发布人</option>
+                    <?php foreach($users as $user){ var_dump($user)?>
+                        <option value="<?= $user['id']?>"><?= $user['username']?></option>
+                    <?php }?>
                 </select>
                 <select name="user_id" style="border-radius: 5px;margin-top: 10px" class="am-modal-prompt-input" id="to-user-name">
                     <option value="" selected disabled>选择指派人</option>
+                    <?php foreach($users as $user){ var_dump($user)?>
+                        <option value="<?= $user['id']?>"><?= $user['username']?></option>
+                    <?php }?>
                 </select>
                 <select name="type" style="border-radius: 5px;margin-top: 10px" class="am-modal-prompt-input" id="">
                     <option value="" selected disabled>选择任务类型</option>

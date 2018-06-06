@@ -1,10 +1,3 @@
-/**
- * Created By SangShaofeng
- * Date 2017/12/15
- * 项目详情
- */
-
-
 // 全局变量对象
 let global = {
 
@@ -81,9 +74,6 @@ $(function () {
         }
     });
 
-
-
-    getUsers();
 
 });
 
@@ -277,29 +267,4 @@ function publishTask (id, data) {
     })
 }
 
-// 获取user
-function getUsers () {
-    $.ajax({
-        url: '/api/user',
-        type: 'get',
-        dataType: 'json',
-        success: function (res) {
-            console.log(res);
-            global.myId = res.first[0].id;
-            renderUsersList(res.data);
-            for (let i = 0; i < res.data.length; i++) {
-                $('#publish-name').append('<option value="'+ res.data[i].id +'"' + (_author_id > 0 && _author_id == res.data[i].id ? ' selected' : '') + '>'+ res.data[i].full_name +'</option>');
-                $('#to-user-name').append('<option value="'+ res.data[i].id +'"' + (_author_id > 0 && _author_id == res.data[i].id ? ' selected' : '') + '>'+ res.data[i].full_name +'</option>');
-            }
-        }
-    })
-}
 
-// 渲染用户列表
-function renderUsersList (data) {
-    for (let i = 0; i < data.length; i++) {
-        let li = '<li data-id="'+ data[i].id +'"><a href="#">'+ data[i].full_name +'</a></li>';
-        $('#accept-user').append(li);
-        $('#publisher').append(li);
-    }
-}
