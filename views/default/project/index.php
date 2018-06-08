@@ -74,7 +74,7 @@
     <?php if(isset($data)){ ?>
         <?php foreach ($data as $item){ ?>
             <div class="task-item">
-                <a href="/task/project/view?id=<?= $item['id']?>"><p><?= $item['title']?></p></a>
+                <a href="/task/task/list?action=item&project_id=<?= $item['id']?>"><p><?= $item['title']?></p></a>
             </div>
         <?php } ?>
     <?php }else{ ?>

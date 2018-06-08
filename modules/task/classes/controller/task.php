@@ -9,7 +9,7 @@ namespace task;
 use \Model_Task;
 class Controller_Task extends Controller_baseController
 {
-    public function get_list($action = 'all'){
+    public function get_list(){
         $action = \Input::get('action');
         $user_id = \Auth::get_user()['user_id'];
         $data = [];
@@ -28,6 +28,13 @@ class Controller_Task extends Controller_baseController
             $data = Model_Task::find('all',array(
                 'where' =>  array(
                     array('publisher_id',$user_id)
+                )
+            ));
+        }else if($action === 'item'){
+            $project_id = \Input::get('project_id');
+            $data = Model_Task::find('all',array(
+                'where' =>  array(
+                    array('project_id',$project_id)
                 )
             ));
         }
