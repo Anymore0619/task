@@ -7,7 +7,5 @@
  */
 class Model_Project extends Model_Base
 {
-    public static function get_query(){
 
-    }
 }

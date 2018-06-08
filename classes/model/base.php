@@ -6,7 +6,6 @@
  * Time: 10:18
  */
 class Model_Base extends \Orm\Model{
-    public static function get_pagination(){
 
-    }
+
 }

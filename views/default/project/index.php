@@ -56,15 +56,15 @@
         </div>
 
         <div class="am-topbar-right">
-            <a href="/task/project/my_tasks"  class="am-btn am-btn-secondary am-topbar-btn am-round am-btn-sm">我的任务</a>
+            <a href="/task/task/list?action=my"  class="am-btn am-btn-secondary am-topbar-btn am-round am-btn-sm">我的任务</a>
         </div>
 
         <div class="am-topbar-right">
-            <a href="/task/project/my_assign" class="am-btn am-btn-primary am-topbar-btn am-round am-btn-sm">我的指派</a>
+            <a href="/task/task/list?action=assign" class="am-btn am-btn-primary am-topbar-btn am-round am-btn-sm">我的指派</a>
         </div>
 
         <div class="am-topbar-right">
-            <a href="/task/project/tasks?action=all"  class="am-btn am-btn-success am-topbar-btn am-round am-btn-sm">全部任务</a>
+            <a href="/task/task/list?action=all"  class="am-btn am-btn-success am-topbar-btn am-round am-btn-sm">全部任务</a>
         </div>
 
     </div>
