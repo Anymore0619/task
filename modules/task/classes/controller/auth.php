@@ -22,4 +22,12 @@ class Controller_Auth extends Controller_baseController
         $this->template->content = \View::forge('default/login');
         //return \Response::forge(\View::forge('default/login'));
     }
+
+    public function get_logout(){
+        \Auth::logout();
+        \View::set_global([
+            'title'  =>  '登陆'
+        ]);
+        $this->template->content = \View::forge('default/login');
+    }
 }

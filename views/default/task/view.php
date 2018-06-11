@@ -125,7 +125,8 @@
         </thead>
 
         <tbody id="task-project-table">
-            <?php if(isset($data)){?>
+
+            <?php var_dump($data);if(isset($data)){?>
 <!--                --><?php //foreach ($data as $item){ ?>
 <!--                    <tr data-id="--><?//= $item['id']?><!--">-->
 <!--                        <td>#--><?//= $item['union_id']?><!--</td>-->
